@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className="font-poppins antialiased">
         <Head />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
