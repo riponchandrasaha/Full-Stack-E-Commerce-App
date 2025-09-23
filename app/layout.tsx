@@ -4,7 +4,7 @@ import "./globals.css";
 import Head from "@/components/Head";
 import Footer from "@/components/Footer";
 
-
+import { ClerkProvider } from '@clerk/nextjs'
 
 
 export const metadata: Metadata = {
@@ -18,12 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="font-poppins antialiased">
-        <Head />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className="font-poppins antialiased">
+          <Head />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
