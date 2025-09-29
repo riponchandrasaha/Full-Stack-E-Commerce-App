@@ -18,6 +18,7 @@ const ProductGrid = () => {
     const query = `*[_type == "product" && variant == $variant] | order(name desc){
   ...,"categories": categories[]->titles
 }`;
+
     const params = { variant: selectedTab.toLowerCase() };
 
     useEffect(() => {
@@ -26,6 +27,7 @@ const ProductGrid = () => {
             try {
                 const response = await client.fetch(query, params);
                 console.log(response);
+                setProducts(response)
                 /*    setProducts(await response); */
             } catch (error) {
                 console.log("Product fetching Error", error);
@@ -57,6 +59,7 @@ const ProductGrid = () => {
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                     >
+
                                         <ProductCard key={product?._id} product={product} />
                                     </motion.div>
                                 </AnimatePresence>
