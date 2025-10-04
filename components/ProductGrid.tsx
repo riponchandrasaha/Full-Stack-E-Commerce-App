@@ -16,7 +16,7 @@ const ProductGrid = () => {
     const [selectedTab, SetSelectedTab] = useState(productType[0]?.title || "");
 
     const query = `*[_type == "product" && variant == $variant] | order(name desc){
-  ...,"categories": categories[]->titles
+  ...,"categories": categories[]->title
 }`;
 
     const params = { variant: selectedTab.toLowerCase() };
